@@ -3,18 +3,15 @@
 @{
 }
 
-
-
-<div id="AppEdit" class="container" data-entity="@JsonSerializer.Serialize(Model.Entity)" v-cloak>
+<div id="AppEdit" class="container" data-entity="@JsonSerializer.Serialize(Model.Entity)">
     <div class="card">
         <div class="card-header">
-            @(Model.id.HasValue ? "Actualizar":"Nuevo")
+            @(Model.id.HasValue ? "Actualizar" : "Nuevo")
         </div>
         <div class="card-body">
             <form id="FormEdit">
 
-
-                <input type="hidden" asp-for="Entity.IdDireccion" v-model="Entity.AgenciaId" />
+                <input type="hidden" asp-for="Entity.IdDireccion" v-model="Entity.IdDireccion" />
 
                 <div class="form-group mb-3">
                     <label for="Entity.DireccionExacta" class="form-label">Dirección Exacta</label>
@@ -25,7 +22,7 @@
                     <label for="Entity.IdCatalogoProvincia" class="form-label">Persona</label>
 
                     <select asp-for="Entity.IdPersona" class="form-select" v-model="Entity.IdPersona"
-                            asp-items="@(new SelectList(Model.PersonaLista,"IdPersona","Nombre"))"                       
+                            asp-items="@(new SelectList(Model.PersonaLista, "IdPersona", "Nombre"))"                       
                             required>
                         <option value=""></option>
                     </select>
@@ -36,7 +33,7 @@
                     <label for="Entity.IdCatalogoProvincia" class="form-label">Provincia</label>
 
                     <select asp-for="Entity.IdCatalogoProvincia" class="form-select" v-model="Entity.IdCatalogoProvincia"
-                            asp-items="@(new SelectList(Model.ProvinciaLista,"IdCatalogoProvincia","NombreCatalogoProvincia"))"
+                            asp-items="@(new SelectList(Model.ProvinciaLista, "IdCatalogoProvincia", "NombreCatalogoProvincia"))"
                             v-on:change="OnChangeProvincia"
                             required>
                         <option value=""></option>
@@ -44,9 +41,9 @@
                 </div>
 
                 <div class="form-group mb-3">
-                    <label for="Entity.IdCatalogoProvincia" class="form-label">Canton</label>
+                    <label for="Entity.IdCatalogoCanton" class="form-label">Canton</label>
 
-                    <select asp-for="Entity.IdCatalogoCanton" class="form-select" v-model="Entity.IdCatalogoCanton"                           
+                    <select asp-for="Entity.IdCatalogoProvincia" class="form-select" v-model="Entity.IdCatalogoCanton"                           
                             required>
                         <option v-for="item in CantonLista" :value="item.IdCatalogoCanton"> {{item.NombreCatalogoCanton}}</option>
                     </select>
@@ -55,7 +52,7 @@
                 <div class="form-group mb-3">
                     <label for="Entity.IdCatalogoProvincia" class="form-label">Distrito</label>
 
-                    <select asp-for="Entity.IdCatalogoDistrito" v-model="Entity.IdCatalogoDistrito" class="form-select" required>
+                    <select asp-for="Entity.IdCatalogoProvincia" v-model="Entity.IdCatalogoDistrito" class="form-select" required>
                         <option v-for="item in DistritoLista" value="item.IdCatalogoDistrito"> {{item.NombreCatalogoDistrito}}</option>
                     </select>
                 </div>
@@ -63,7 +60,7 @@
 
                 <div class="form-group form-check form-switch">
                     <input class="form-check-input" type="checkbox" asp-for="Entity.Estado" v-model="Entity.Estado" value="true">
-                    <label class="form-check-label" for="Entity_Estado">Estado</label>
+                    <label class="form-check-label" for="Entity.Estado">Estado</label>
                 </div>
 
                 <div class="row">

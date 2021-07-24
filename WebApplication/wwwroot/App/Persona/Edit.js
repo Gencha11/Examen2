@@ -1,7 +1,7 @@
 "use strict";
 var PersonaEdit;
 (function (PersonaEdit) {
-    var Entity = $("#AppEdit").data("");
+    var Entity = $("#AppEdit").data("entity");
     var Formulario = new Vue({
         data: {
             Formulario: "#FormEdit",
